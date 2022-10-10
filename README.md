@@ -22,7 +22,7 @@ Business Value: This is an application for individual users, it helps consumers 
 
 #### Example ####
 
-[App Functionality Example](images/function_example.jpg)
+![App Functionality Example](images/function_example.jpg)
 
 #### Minimum Viable Product ####
 
