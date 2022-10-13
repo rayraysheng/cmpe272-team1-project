@@ -1,6 +1,104 @@
 # cmpe272-team1-project
 
+
+
 ## Project Planning - Internal Use ##
+
+
+
+### UPDATES ###
+
+
+#### 2022-10-11 ####
+
+##### App Operations #####
+
+1. Search
+User inputs ***search term*** into app
+App handles the search and makes API call to food database
+Food database returns a list of ***food items*** as search result
+User selects a specific food item from the list
+App then passes the reference to the chosen food item to the food database
+Food database returns data for that food item
+	- this food data would contain:
+		- Food item title
+		- Food serving unit (e.g. g, lb, oz, mL, etc.)
+		- Calories per serving
+		- grams protein per serving
+		- grams fat per serving
+		- grams carbs per serving
+		- anything else?
+
+2. Calculation
+User inputs ***serving quantity*** and ***price*** into app
+App uses serving quantity and price, combined with food data, calculates and displays ***grams protein per dollar spent***
+If the user had previously saved a ***daily protein target***, the App will use it in calculations to return and display ***dollars spent per day of protein***
+
+3. Saving to list
+User can then hit a save button, and the app will pass the information on screen to the user database
+
+##### Database schema #####
+
+We will need to create at least 2 tables in our database.
+
+1. User table - for storing data specific to each user
+	- User Identifier - could be an ID, email address, etc. depending on how Android studio authenticates login
+	- Maybe a hashed/encrypted password? depending on how Android studio authenticats login
+	- Daily protein target - as defined by user
+1. Saved items table - for storing user-saved searches
+	- User Identifier - foreign key referencing the User table
+	- Food Identifier - reference for the food item in the food database
+	- Serving Quantity - as defined by user in the latest saved search
+	- Price - as defned by user in the latest saved search
+
+We are currently favoring using the USDA-provide API to access their food database directly. If we end up changing our mind and decide to keep our own database for food, then we will need to design a table for that as well.
+
+
+##### Topics to research and explore #####
+
+1. How to implement and manage [User Login Authentication](https://developer.android.com/training/id-auth)
+1. Session management to prevent 2 instances of same user logging in at the same time
+1. Decypher the USDA food database API and schema, keep 2 things in mind in particular
+	1. where are the specific fields that we need for our use cases?
+		- food item title
+		- macronutrients per serving: protein, carbs, fat, total calories
+		- serving unit
+		- anything else?
+	1. how do we implement the search function from the app?
+1. Setting up relational database in the cloud, which provider should we go with?
+1. Making app-specific custom APIs to enable communication between DB and App
+1. [**Android Studio** tutorials](https://developer.android.com/guide/components/fundamentals)
+1. Explore [**Tensorflow.js**](https://www.tensorflow.org/js)
+
+
+#### 2022-10-09 ####
+
+1. Finalize tools, technologies, resources
+	1. Application:
+		-Build app with **Android Studio** in **Java**
+	1. Database: 
+		- For each user, we will need to store a list of the users' saved searches. If we end up implementing the daily protein intake feature and/or the options menu feature, we will also need to save that data.
+		- As for the food database itself, we can manually download and store a selection of food data in our own database, or we can use an API key to directly access the FDA-provided data. We should have the person in charge of this portion of the project make the decision.
+		1. Type: Most likely SQL? Any other suggestions?
+		1. Provider: 
+			- Need to make sure we can connect to it in our Android app
+			AWS? GCP? Other? Any preferences among our team members?
+		1. Data source: [USDA FoodData Central](https://fdc.nal.usda.gov/api-guide.html)
+	1. Are there any other architectural components that we need to take into consideration?
+
+1. Division of Responsibilities
+	1. Application
+		1. Software design & architecture
+			- will need to coordinate with the database person to figure out how to handle the search function, i.e. how to take the specific input from the user and get the right information from the database
+		1. UI design & implementation
+	1. Database
+		1. Research and choose the provider
+		1. User options data: build the database and provide APIs for the app to access database
+		1. FDA Data
+			- If we are maintaining our own food databse, then build the database and provide APIs for the app to access database
+			- If we are directly using the FDA's API, then develop the specific code for the app to access the exact data that we need
+	1. Is there anything else that comes to mind that we need to do right now?
+
 
 ### Overview ###
 
@@ -57,30 +155,3 @@ We are likely to not have time to implement these features. If we have time to a
 	- grams per dollar or dollars per gram
 	- show or hide dollars per 2000 Calories
 
-### Tasks ###
-
-1. Finalize tools, technologies, resources
-	1. Application:
-		-Build app with **Android Studio** in **Java**
-	1. Database: 
-		- For each user, we will need to store a list of the users' saved searches. If we end up implementing the daily protein intake feature and/or the options menu feature, we will also need to save that data.
-		- As for the food database itself, we can manually download and store a selection of food data in our own database, or we can use an API key to directly access the FDA-provided data. We should have the person in charge of this portion of the project make the decision.
-		1. Type: Most likely SQL? Any other suggestions?
-		1. Provider: 
-			- Need to make sure we can connect to it in our Android app
-			AWS? GCP? Other? Any preferences among our team members?
-		1. Data source: [FDA FoodData Central](https://fdc.nal.usda.gov/api-guide.html)
-	1. Are there any other architectural components that we need to take into consideration?
-
-1. Division of Responsibilities
-	1. Application
-		1. Software design & architecture
-			- will need to coordinate with the database person to figure out how to handle the search function, i.e. how to take the specific input from the user and get the right information from the database
-		1. UI design & implementation
-	1. Database
-		1. Research and choose the provider
-		1. User options data: build the database and provide APIs for the app to access database
-		1. FDA Data
-			- If we are maintaining our own food databse, then build the database and provide APIs for the app to access database
-			- If we are directly using the FDA's API, then develop the specific code for the app to access the exact data that we need
-	1. Is there anything else that comes to mind that we need to do right now?
