@@ -1,8 +1,8 @@
 # cmpe272-team1-project
 
-## Everyone please fork a new branch of the github repo. I will stop pushing directly to the main branch as that is not good practice :laughing:
+## Everyone please create a new branch of the github repo. I will stop pushing directly to the main branch as that is not good practice :laughing:
 
-let's each fork a new branch for now, and we can discuss [branching practices](https://gist.github.com/digitaljhelms/4287848) next meeting
+let's each create a new branch for now, and we can discuss [branching practices](https://gist.github.com/digitaljhelms/4287848) next meeting
 
 ## Project Planning - Internal Use ##
 
