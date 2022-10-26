@@ -67,6 +67,7 @@ Right now, we have 3 components of the project going on in parallel.
 		- [Add build dependencies](https://developer.android.com/studio/build/dependencies)
 		- [Project Overview](https://developer.android.com/studio/projects)
 		- [Configure your build](https://developer.android.com/studio/build)
+		- [Authenticate user logins](https://developer.android.com/training/id-auth)
 
 ##### Task breakdown
 
