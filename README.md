@@ -1,12 +1,90 @@
 # cmpe272-team1-project
 
-
+## Everyone please fork a new branch of the github repo. I will stop pushing directly to the main branch as that is not good practice :laughing:
 
 ## Project Planning - Internal Use ##
 
 
 
 ### UPDATES ###
+
+#### 2022-10-25
+
+- Continue to explore USDA food database API - Kai
+- Set up cloud database for user data - Zeel
+- Set up Android Studio project itself, manage dependencies, etc. - Ray
+- Wireframe the UI for the app - we can work on this part once the Android Studio project overhead has been set up
+
+##### Summary
+
+So far we have explored the USDA database API and have become more confident with it. We have successfully tested using it to retrieve relevant data from the database. We will explore it further with 2 goals in mind: 
+1. make the API calls directly using Java so that the mobile app can directly information from the database without needing setting up our own backend
+2. develop Java methods to parse the returned JSON objects and isolate the specific data fields that we will be using in the app
+
+As for Tensorflow.js, currently we do not have any requirements that would call for machine learning features. If we want to add them in the future, we can come back to it and investigate.
+
+Before we can start doing actual work on the app, we will need to set up the Android Studio project itself, with special regards to dependency management. This will ensure that everyone is using the same Java version and all of the necessary packages are available to use. This would also give us a better idea of how Android studio works and how to deploy the app. 
+
+One last missing part of the puzzle is the cloud database that we will need to setup and maintain to manage app user data. The main requirement for this database is that the app will have to have some way to do read and write operations on it.
+
+During the meeting, we mentioned that we should also think about wireframing the app UI before we start building it. Once we have the Android Studio project set up, we can brainstorm the UI together.
+
+It was also mentioned that we should each fork a branch of the github repo, instead of directly pushing to master.
+
+
+##### Next Steps
+
+Right now, we have 3 components of the project going on in parallel. 
+
+1. USDA food database & API
+	- Todo:
+		1. test ways of making API calls to the USDA food database directly using Java
+		2. further explore the JSON objects returned and better understand where the relevant data fields are
+	- References: 
+		- [How to use Java URLConnection and HttpURLConnection
+](https://www.codejava.net/java-se/networking/how-to-use-java-urlconnection-and-httpurlconnection)
+		- [Java URLConnection and HttpURLConnection Examples
+](https://www.codejava.net/java-se/networking/java-urlconnection-and-httpurlconnection-examples)
+		- [Java HTTP utility class to send GET/POST request
+](https://www.codejava.net/java-se/networking/an-http-utility-class-to-send-getpost-request)
+		- [developer.android.com Documentation for HttpURLConnection](https://developer.android.com/reference/java/net/HttpURLConnection)
+		- [Unirest-Java: An alternative to the package above](https://kong.github.io/unirest-java/)
+2. Cloud database for user data
+	- Todo:
+		1. research and decide on a provider for cloud-based SQL database
+		2. test implementation of a the database
+		3. research ways for connecting the app to the database
+	- References:
+		- [Connect to GCP using Cloud SQL connectors](https://cloud.google.com/sql/docs/mysql/connect-connectors)
+		- [Adding an Amazon RDS DB instance to your Java application environment
+](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html)
+		- [Use Java and JDBC with Azure SQL Database
+](https://learn.microsoft.com/en-us/azure/azure-sql/database/connect-query-java?view=azuresql)
+		- [Stackoverflow discussion on cloud databases for Android app](https://stackoverflow.com/questions/12104756/how-to-use-free-cloud-database-with-android-app)
+3. Android studio project setup
+	-Todo:
+		1. comprehensive research on Android Studio
+		2. set up the base infrastructure for building the app
+	- References:
+		- [Application Fundamentals](https://developer.android.com/guide/components/fundamentals)
+		- [Add build dependencies](https://developer.android.com/studio/build/dependencies)
+		- [Project Overview](https://developer.android.com/studio/projects)
+		- [Configure your build](https://developer.android.com/studio/build)
+
+##### Task breakdown
+
+- Kai will focus on the USDA food database & API aspect of the project
+- Zeel will focus on the cloud database aspect of the project
+- Ray will focus on the Android Studio aspect of the project
+- Lalitha please feel free to keep looking into the different aspects of the project for now
+
+We will meet again next Tuesday (11-01) to review our progress and plan our next steps. We can also brainstorm and wireframe the UI of the app then.
+
+We can expect to have a more clear roadmap and more specific things to do after our meeting next week.
+
+Please feel free to share any resources and information that you think would be helpful for the project.
+
+**Hope everyone has a good week!**
 
 
 #### 2022-10-11 ####
