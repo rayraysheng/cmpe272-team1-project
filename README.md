@@ -26,7 +26,7 @@ One last missing part of the puzzle is the cloud database that we will need to s
 
 During the meeting, we mentioned that we should also think about wireframing the app UI before we start building it. Once we have the Android Studio project set up, we can brainstorm the UI together.
 
-It was also mentioned that we should each fork a branch of the github repo, instead of directly pushing to master.
+It was also mentioned that we should each use a separate branch of the github repo, instead of directly pushing to master.
 
 
 ##### Next Steps
