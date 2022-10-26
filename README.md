@@ -12,11 +12,6 @@ let's each create a new branch for now, and we can discuss [branching practices]
 
 #### 2022-10-25
 
-- Continue to explore USDA food database API - Kai
-- Set up cloud database for user data - Zeel
-- Set up Android Studio project itself, manage dependencies, etc. - Ray
-- Wireframe the UI for the app - we can work on this part once the Android Studio project overhead has been set up
-
 ##### Summary
 
 So far we have explored the USDA database API and have become more confident with it. We have successfully tested using it to retrieve relevant data from the database. We will explore it further with 2 goals in mind: 
