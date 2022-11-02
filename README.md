@@ -4,9 +4,8 @@
 
 let's each create a new branch for now, and we can discuss [branching practices](https://gist.github.com/digitaljhelms/4287848) next meeting
 
+
 ## Project Planning - Internal Use ##
-
-
 
 ### UPDATES ###
 
@@ -231,3 +230,7 @@ We are likely to not have time to implement these features. If we have time to a
 	- grams per dollar or dollars per gram
 	- show or hide dollars per 2000 Calories
 
+## Resources 
+
+- [OkHttp tutorial](https://www.youtube.com/watch?v=RGQ3_UpDzO0)
+- [OkHttp docs](https://square.github.io/okhttp/)
