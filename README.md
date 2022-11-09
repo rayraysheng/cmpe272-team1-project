@@ -1,13 +1,47 @@
 # cmpe272-team1-project
 
-## Everyone please create a new branch of the github repo. I will stop pushing directly to the main branch as that is not good practice :laughing:
-
-let's each create a new branch for now, and we can discuss [branching practices](https://gist.github.com/digitaljhelms/4287848) next meeting
-
 
 ## Project Planning - Internal Use ##
 
 ### UPDATES ###
+
+#### 2022-11-08
+
+##### Thing to work on for this week: 
+1. Refine api interaction to encapsulate the search results and provide getter methods for specific data fields - Ray
+2. Build app prototype and setup screens so they can go from page to page according to our app functions - Kai
+3. Implement local relational database within the app using Room to store user saved data - Lalitha & Zeel
+
+##### Proxy getter targets:
+- String: food ID
+- int: carbs
+- int: fat
+- int: protein
+- int: total Calories
+- String: unit
+- String: brand
+- String: description
+
+##### Screens flow:
+
+![Screen Flow](images/1108/screen_flow.jpg)
+
+![Search Screen](images/1108/search_screen.png)
+
+![Search Results](images/1108/search_results.png)
+
+![Specific Food Item](images/1108/specific_food.png)
+
+![Saved List](images/1108/saved_list.png)
+
+##### Calculations:
+- Grams of Protein per Dollar = ( protein * quantity ) / price
+ - protein is returned from http request
+ - quantity and price are user-entered
+- Dollars per Day for Protein = ( price / ( protein * quantity ) ) * daily_protein
+ - protein is returned from http request
+ - quantity and price are user-entered
+ - daily_protein is saved by user in a setting screen (to be implemented later), we can use a hard-coded value for now
 
 #### 2022-10-25
 
