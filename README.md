@@ -26,11 +26,19 @@
 
 ![Screen Flow](images/1108/screen_flow.jpg)
 
+Search Screen:
+
 ![Search Screen](images/1108/search_screen.png)
+
+Search Results:
 
 ![Search Results](images/1108/search_results.png)
 
+Specific Food Item:
+
 ![Specific Food Item](images/1108/specific_food.png)
+
+Saved List:
 
 ![Saved List](images/1108/saved_list.png)
 
