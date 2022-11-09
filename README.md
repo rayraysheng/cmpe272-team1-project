@@ -43,10 +43,11 @@ Saved List:
 ![Saved List](images/1108/saved_list.png)
 
 ##### Calculations:
-- Grams of Protein per Dollar = ( protein * quantity ) / price
+1. Grams of Protein per Dollar = ( protein * quantity ) / price
  - protein is returned from http request
  - quantity and price are user-entered
-- Dollars per Day for Protein = ( price / ( protein * quantity ) ) * daily_protein
+
+1. Dollars per Day for Protein = ( price / ( protein * quantity ) ) * daily_protein
  - protein is returned from http request
  - quantity and price are user-entered
  - daily_protein is saved by user in a setting screen (to be implemented later), we can use a hard-coded value for now
