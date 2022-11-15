@@ -11,6 +11,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UsdaProxy.getInstance().search("chicken breast", 2);
+        UsdaProxy proxy = UsdaProxy.getInstance();
+       // proxy.search("chicken breast", 2);
+        try {
+            proxy.search("chicken breast", 10);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

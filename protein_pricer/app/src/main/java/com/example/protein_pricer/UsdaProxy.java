@@ -1,61 +1,90 @@
 package com.example.protein_pricer;
 
+import android.os.AsyncTask;
+
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
 import org.json.JSONArray;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Map;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class UsdaProxy {
 
     private final OkHttpClient client = new OkHttpClient();
     private final Moshi moshi = new Moshi.Builder().build();
-    private final JsonAdapter<Gist> gistJsonAdapter = moshi.adapter(Gist.class);
+
 
     private static UsdaProxy instance;
+    private static HttpURLConnection connection;
     private final String apikey = "UkaojsuvAJCo3lryhbiiUg0eodTWSnmQyCIYr76d";
 
-    private UsdaProxy(){}
+    private UsdaProxy() {
+    }
 
-    public static synchronized UsdaProxy getInstance(){
-        if (instance == null){
+
+    public static synchronized UsdaProxy getInstance() {
+        if (instance == null) {
             instance = new UsdaProxy();
         }
         return instance;
     }
 
+    public void search(String term, int size) throws Exception {
 
-    public JSONObject search(String query, int pages){
+        String url_base = "https://api.nal.usda.gov/fdc/v1/foods/search?query=";
+        String url_mod = term + "&pageSize=" + String.valueOf(size) + "&api_key=" + apikey;
 
-        String url_base = "https://api.nal.usda.gov/fdc/v1/foods/";
-        String url_mod = "search?query=" + query + "&pageSize=" + String.valueOf(pages) + "&apikey=" + apikey;
-        String url_full = url_base + url_mod;
+        Request request = new Request.Builder()
+                .url(url_base + url_mod)
+                .build();
 
-        /*
-        try {
-            HttpResponse<JsonNode> response = Unirest.get("https://api.nal.usda.gov/fdc/v1/foods/search?query=chicken%20breast%20tyson&pageSize=10&api_key=UkaojsuvAJCo3lryhbiiUg0eodTWSnmQyCIYr76d").asJson();
-            JSONObject json = response.getBody().getObject();
-            System.out.println(json.toString());
-            return json;
-        } catch (UnirestException e) {
-            e.printStackTrace();
-            return null;
-        }
+        client.newCall(request).enqueue(new Callback() {
+            private JSONArray result;
 
-         */
-        System.out.println("not here");
-        return null;
-    }
+            @Override public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
 
-    static class Gist {
-        Map<String, GistFile> files;
-    }
+            @Override public void onResponse(Call call, Response response) throws IOException {
+                try (ResponseBody responseBody = response.body()) {
+                    if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
-    static class GistFile {
-        String content;
+                    String json_string = responseBody.string();
+
+                    try {
+                        JSONObject json = new JSONObject(json_string);
+                        JSONArray foods =  json.getJSONArray("foods");
+
+                        //System.out.println(foods.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        //return client.newCall(request).enqueue().onResponse.foods;
     }
 }
