@@ -10,6 +10,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="testing">"testing functions"</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
