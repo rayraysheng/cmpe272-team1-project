@@ -1,5 +1,6 @@
 package com.example.protein_pricer;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import org.json.JSONException;
@@ -15,6 +16,8 @@ import com.squareup.moshi.Moshi;
 import org.json.JSONArray;
 
 import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -75,9 +78,16 @@ public class UsdaProxy {
 
                     try {
                         JSONObject json = new JSONObject(json_string);
+                        //System.out.println("json: " + json.toString());
                         JSONArray foods =  json.getJSONArray("foods");
+                        //System.out.println("foods: " + foods.toString());
 
-                        //System.out.println(foods.toString());
+
+
+
+                        SearchReturn.getInstance().setItems(foods);
+                        //System.out.println("after setItems: ");
+                        System.out.println(SearchReturn.getInstance().getItems().toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -86,5 +96,9 @@ public class UsdaProxy {
         });
 
         //return client.newCall(request).enqueue().onResponse.foods;
+    }
+
+    public void writeToFile(String name, String content){
+
     }
 }
