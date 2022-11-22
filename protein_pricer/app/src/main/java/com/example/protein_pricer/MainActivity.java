@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import com.example.protein_pricer.SearchHandler.LocalBinder;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private Search search;
 
@@ -38,7 +40,35 @@ public class MainActivity extends AppCompatActivity {
 
          */
 
-        searchHandler.search();
+        // To do a search
+        try {
+            searchHandler.search("tofu", 10);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //System.out.println("success: " + searchHandler.getResults().toString());
+        //searchHandler.printItems();
+
+        // After searching, access each food item by using:
+        ArrayList<FoodItem> search_results = searchHandler.getItems();
+        for(int i = 0; i < search_results.size(); i++){
+
+            FoodItem item = search_results.get(i);
+
+            // Then call the specific method to get specific field
+            // For example:
+            System.out.println("-------------------");
+            System.out.println("id: " + item.getId());
+            System.out.println("desc: " + item.getDescription());
+            System.out.println("brand: " + item.getBrand());
+            System.out.println("serving: " + item.getServing());
+            System.out.println("protein " + item.getProtein());
+            System.out.println("carbs " + item.getCarbs());
+            System.out.println("fat " + item.getFat());
+            System.out.println("energy " + item.getCalories());
+            System.out.println("===================");
+        }
     }
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
