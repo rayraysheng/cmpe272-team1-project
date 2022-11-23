@@ -5,6 +5,10 @@
 
 ### UPDATES ###
 
+#### 2022-11-22
+
+[bound service](https://www.youtube.com/watch?v=angnIJMsCI8&ab_channel=CodingPursuit)
+
 #### 2022-11-08
 
 ##### Thing to work on for this week: 

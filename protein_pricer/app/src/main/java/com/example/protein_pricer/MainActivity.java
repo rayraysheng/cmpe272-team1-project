@@ -23,26 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Connect to Search Handler service
         Intent intent = new Intent(this, SearchHandler.class);
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
-        /*
-        UsdaProxy proxy = UsdaProxy.getInstance();
-        try {
-            proxy.search("chicken breast", 10);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-         */
-        /*
-        SearchReturn.getInstance();
-        search = new Search("chicken breast", 10);
-
-         */
-
         // To do a search
         try {
-            searchHandler.search("tofu", 10);
+            searchHandler.search("pizza", 10);
         } catch (Exception e) {
             e.printStackTrace();
         }
