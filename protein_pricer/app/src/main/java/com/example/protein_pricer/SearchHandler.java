@@ -23,7 +23,6 @@ public class SearchHandler extends Service {
 
     private final String apikey = "UkaojsuvAJCo3lryhbiiUg0eodTWSnmQyCIYr76d";
     private final OkHttpClient client = new OkHttpClient();
-    public LocalBinder local_binder = new LocalBinder();
 
     private JSONArray search_results;
     public JSONArray getResults() {
@@ -40,6 +39,7 @@ public class SearchHandler extends Service {
     private void setResults(JSONArray results){
         this.search_results = results;
     }
+    public void resetResults(){this.search_results = null; }
 
     private ArrayList<FoodItem> items = new ArrayList<FoodItem>();
     public ArrayList<FoodItem> getItems() {
@@ -52,6 +52,7 @@ public class SearchHandler extends Service {
                 JSONObject obj = array.getJSONObject(i);
 
                 FoodItem item = new FoodItem(obj);
+                item.setIndex(i);
                 items.add(item);
                 //System.out.println(obj.toString());
             } catch (JSONException e) {
@@ -66,8 +67,7 @@ public class SearchHandler extends Service {
         }
     }
 
-
-    UsdaProxy proxy = UsdaProxy.getInstance();
+    public LocalBinder local_binder = new LocalBinder();
 
     public SearchHandler() {
     }
@@ -114,6 +114,7 @@ public class SearchHandler extends Service {
         });
 
         setItems();
+        SearchReturns.getInstance().setItems(this.items);
     }
 
     public class LocalBinder extends Binder {

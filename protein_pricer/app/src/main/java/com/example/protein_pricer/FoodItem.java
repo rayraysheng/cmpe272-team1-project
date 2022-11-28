@@ -11,6 +11,7 @@ public class FoodItem {
     private JSONObject json;
     private JSONArray nutrients;
 
+    private int index;
     private int id;
     private double carbs = 0;
     private double protein = 0;
@@ -41,6 +42,13 @@ public class FoodItem {
     }
 
     public JSONObject getJson() { return json; }
+
+    public void setIndex(int i){
+        this.index = i;
+    }
+    public int getIndex(){
+        return this.index;
+    }
 
     public double getId() {
         return id;
@@ -90,7 +98,12 @@ public class FoodItem {
             e.printStackTrace();
         }
 
-        this.size = s;
+        if(s != 0){
+            this.size = s;
+        }
+        else {
+            this.size = 1;
+        }
     };
 
     public String getUnit() {
@@ -105,7 +118,13 @@ public class FoodItem {
             e.printStackTrace();
         }
 
-        this.unit = u;
+        if(u != ""){
+            this.unit = u;
+        }
+        else {
+            this.unit = "oz";
+        }
+
     }
 
     public String getBrand() {
@@ -120,7 +139,13 @@ public class FoodItem {
             e.printStackTrace();
         }
 
-        this.brand = br;
+        if(br != ""){
+            this.brand = br;
+        }
+        else{
+            this.brand = "N/A";
+        }
+
     }
 
     public String getDescription() {
@@ -179,6 +204,7 @@ public class FoodItem {
 
     private void printAll(){
         System.out.println("-------------------");
+        System.out.println("index: " + getIndex());
         System.out.println("id: " + getId());
         System.out.println("desc: " + getDescription());
         System.out.println("brand: " + getBrand());
