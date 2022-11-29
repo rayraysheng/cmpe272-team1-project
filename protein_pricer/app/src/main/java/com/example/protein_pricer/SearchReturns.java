@@ -30,4 +30,11 @@ public class SearchReturns {
         }
         return instance;
     }
+
+    public void printItems(){
+        for(int i = 0; i < items.size(); i++){
+            FoodItem item = items.get(i);
+            System.out.println("item - " + i + ": " + item.getServing());
+        }
+    }
 }

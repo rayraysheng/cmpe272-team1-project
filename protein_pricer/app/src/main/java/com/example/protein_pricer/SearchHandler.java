@@ -41,16 +41,13 @@ public class SearchHandler extends Service {
     }
     public void resetResults(){this.search_results = null; }
 
-    private ArrayList<FoodItem> items = new ArrayList<FoodItem>();
-    public ArrayList<FoodItem> getItems() {
-        return items;
-    }
     private void setItems(){
         JSONArray array = getResults();
+        ArrayList<FoodItem> items = new ArrayList<FoodItem>();
+
         for(int i = 0; i < array.length(); i++){
             try {
                 JSONObject obj = array.getJSONObject(i);
-
                 FoodItem item = new FoodItem(obj);
                 item.setIndex(i);
                 items.add(item);
@@ -59,13 +56,9 @@ public class SearchHandler extends Service {
                 e.printStackTrace();
             }
         }
+        SearchReturns.getInstance().setItems(items);
     };
-    public void printItems(){
-        for(int i = 0; i < items.size(); i++){
-            FoodItem item = items.get(i);
-            System.out.println("item - " + i + ": " + item.getServing());
-        }
-    }
+
 
     public LocalBinder local_binder = new LocalBinder();
 
@@ -114,7 +107,6 @@ public class SearchHandler extends Service {
         });
 
         setItems();
-        SearchReturns.getInstance().setItems(this.items);
     }
 
     public class LocalBinder extends Binder {

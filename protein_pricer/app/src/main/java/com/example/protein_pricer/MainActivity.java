@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                System.out.println("1st page accessing searchHandler: " + searchHandler.getItems().toString());
-
                 // Go to next page
                 opensearchResult();
             }

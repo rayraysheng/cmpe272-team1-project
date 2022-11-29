@@ -8,7 +8,6 @@ import org.json.JSONObject;
 
 public class FoodItem {
 
-    private JSONObject json;
     private JSONArray nutrients;
 
     private int index;
@@ -23,25 +22,22 @@ public class FoodItem {
     private String description;
 
     public FoodItem(JSONObject json){
-        this.json = json;
-        setId();
-        setDescription();
-        setBrand();
-        setUnit();
-        setSize();
-        setNutrients();
+        setId(json);
+        setDescription(json);
+        setBrand(json);
+        setUnit(json);
+        setSize(json);
+        setNutrients(json);
         //printAll();
     }
 
-    public void checkType(String key){
+    public void checkType(JSONObject json, String key){
         try {
             System.out.println(json.get(key).getClass().getName());
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-
-    public JSONObject getJson() { return json; }
 
     public void setIndex(int i){
         this.index = i;
@@ -53,7 +49,7 @@ public class FoodItem {
     public double getId() {
         return id;
     }
-    public void setId() {
+    public void setId(JSONObject json) {
 
         int id = 0;
 
@@ -89,7 +85,7 @@ public class FoodItem {
     }
 
     public double getSize(){return size;}
-    public void setSize(){
+    public void setSize(JSONObject json){
         double s = 0;
 
         try {
@@ -109,7 +105,7 @@ public class FoodItem {
     public String getUnit() {
         return unit;
     }
-    public void setUnit() {
+    public void setUnit(JSONObject json) {
         String u = "";
 
         try {
@@ -130,7 +126,7 @@ public class FoodItem {
     public String getBrand() {
         return brand;
     }
-    public void setBrand() {
+    public void setBrand(JSONObject json) {
         String br = "";
 
         try {
@@ -151,7 +147,7 @@ public class FoodItem {
     public String getDescription() {
         return description;
     }
-    public void setDescription() {
+    public void setDescription(JSONObject json) {
         String desc = "";
 
         try {
@@ -174,7 +170,7 @@ public class FoodItem {
     }
 
     // create nutrient list
-    private void setNutrients(){
+    private void setNutrients(JSONObject json){
         try {
             nutrients =  json.getJSONArray("foodNutrients");
         } catch (JSONException e) {
