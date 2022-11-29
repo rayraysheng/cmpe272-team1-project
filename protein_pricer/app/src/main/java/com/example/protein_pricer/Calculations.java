@@ -2,6 +2,7 @@ package com.example.protein_pricer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,7 +57,6 @@ public class Calculations extends AppCompatActivity {
 
         // Assign buttons
         calculate.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
                 // Take user input
@@ -67,6 +67,14 @@ public class Calculations extends AppCompatActivity {
 
                 // Display result
                 ppd.setText(String.valueOf(ppd()) + "g Protein per Dollar Spent");
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intentNext = new Intent(Calculations.this, MainActivity.class);
+                startActivity(intentNext);
             }
         });
     }
