@@ -73,8 +73,18 @@ public class Calculations extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intentNext = new Intent(Calculations.this, MainActivity.class);
-                startActivity(intentNext);
+                Intent new_search = new Intent(Calculations.this, MainActivity.class);
+                startActivity(new_search);
+            }
+        });
+
+        saved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(LoginStatus.getInstance().status() == false){
+                   CannotSaveDialog dialog = new CannotSaveDialog();
+                   dialog.show(getSupportFragmentManager(), "Cannot Save");
+                }
             }
         });
     }

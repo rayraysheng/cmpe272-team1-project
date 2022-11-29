@@ -64,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginStatus.getInstance().logout();
+                Intent out = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(out);
+            }
+        });
 
         // Connect to Search Handler service
         Intent intentSH = new Intent(this, SearchHandler.class);
