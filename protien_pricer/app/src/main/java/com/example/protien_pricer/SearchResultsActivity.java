@@ -50,6 +50,7 @@ public class SearchResultsActivity extends AppCompatActivity {
          */
 
         setAdapter();
+        setTitle("Search Results");
 
         /*
         for(int i = 0; i < items.size(); i++){

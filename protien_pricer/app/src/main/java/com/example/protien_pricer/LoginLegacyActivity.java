@@ -32,14 +32,14 @@ public class LoginLegacyActivity extends AppCompatActivity {
     private GoogleSignInClient client;
     FirebaseAuth auth;
     FirebaseDatabase database;
-    TextView textView2;
-
-    private FBDBProxy proxy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_legacy);
+
+        setTitle("Log Into Greatest App Ever");
+
         sign_in_button = findViewById(R.id.button_sign_in);
         skip_button = findViewById(R.id.skip_button);
         //other = findViewById(R.id.other_button);
@@ -103,9 +103,6 @@ public class LoginLegacyActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = auth.getCurrentUser();
                             System.out.println("================== User ID: " + user.getUid());
-                            proxy = FBDBProxy.getInstance();
-                            proxy.setRef(user.getUid());
-                            proxy.buildItems();
                             goToMain();
                         } else {
                             Toast.makeText(LoginLegacyActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

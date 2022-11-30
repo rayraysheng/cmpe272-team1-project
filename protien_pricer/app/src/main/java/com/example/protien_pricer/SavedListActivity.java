@@ -33,6 +33,7 @@ public class SavedListActivity extends AppCompatActivity {
         items = proxy.getItems();
 
         setAdapter();
+        setTitle("Saved Items");
 
         // Testing
 

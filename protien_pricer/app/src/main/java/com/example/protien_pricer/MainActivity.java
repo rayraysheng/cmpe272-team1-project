@@ -34,10 +34,15 @@ public class MainActivity extends AppCompatActivity {
     SearchHandler searchHandler = new SearchHandler();
     boolean isConnected = false;
 
+    FirebaseAuth auth;
+    FBDBProxy proxy;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle("Welcome to Protein Pricer");
 
         // Link page elements
         search_box = (EditText)findViewById(R.id.search_box);
@@ -45,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
         search_page_title = (TextView)findViewById(R.id.search_page_title);
         logout_button = (Button)findViewById(R.id.logout_button);
         saved_button = (Button)findViewById(R.id.saved_button);
+
+        // Pre-build Saved List
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        proxy = FBDBProxy.getInstance();
+        if(user != null){
+            proxy.setRef(user.getUid());
+            proxy.buildItems();
+        }
+        else{
+            logout_button.setText("Log In");
+        }
 
         // Setup Buttons
         search_button.setOnClickListener(new View.OnClickListener() {

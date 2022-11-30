@@ -33,6 +33,8 @@ public class Calculations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculations);
 
+        setTitle("Greatest App Ever");
+
         // Set up fields
         TextView desc = findViewById(R.id.calc_desc);
         TextView brand = findViewById(R.id.calc_brand);
@@ -87,7 +89,7 @@ public class Calculations extends AppCompatActivity {
                 ppd(); // Calculate
 
                 // Display result
-                ppd.setText(String.valueOf(ppd()) + "g Protein per Dollar Spent");
+                ppd.setText(String.valueOf((int)(ppd())) + "g Protein per Dollar Spent");
             }
         });
 
@@ -151,7 +153,7 @@ public class Calculations extends AppCompatActivity {
         }
 
         double result = (protein * quantity) / price;
-        return result;
+        return Math.round(result);
     }
 
 }
