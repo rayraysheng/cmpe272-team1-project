@@ -34,14 +34,13 @@ public class SearchResultsActivity extends AppCompatActivity {
         // Connect to Search Handler service
         Intent intentSH = new Intent(this, SearchHandler.class);
         bindService(intentSH, serviceConnection, Context.BIND_AUTO_CREATE);
-        System.out.println("2nd page connected: " + isConnected);
+        //System.out.println("2nd page connected: " + isConnected);
 
 
         recyclerView = findViewById(R.id.search_results);
 
-
         items = SearchReturns.getInstance().getItems();
-        System.out.println("2nd page items: " + items.toString());
+        //System.out.println("2nd page items: " + items.toString());
 
 
         /*

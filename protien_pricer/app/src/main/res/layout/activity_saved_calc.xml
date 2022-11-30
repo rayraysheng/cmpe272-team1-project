@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calculations">
+    tools:context=".SavedCalc">
 
     <TextView
         android:id="@+id/calc_desc"
@@ -71,7 +71,8 @@
         android:layout_margin="10dp"/>
 
     <Button
-        android:id="@+id/save_button"
+        android:id="@+id/delete_button"
+        style="@android:style/Widget.Material.Light.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/price"
@@ -80,7 +81,9 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:layout_toRightOf="@+id/calculate_button"
-        android:text="Save" />
+        android:background="#F44336"
+        android:backgroundTint="#FF0707"
+        android:text="Delete" />
 
     <Button
         android:id="@+id/home_button_calc"

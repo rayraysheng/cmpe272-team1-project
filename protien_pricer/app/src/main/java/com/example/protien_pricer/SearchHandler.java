@@ -75,6 +75,7 @@ public class SearchHandler extends Service {
 
         String url_base = "https://api.nal.usda.gov/fdc/v1/foods/search?query=";
         String url_mod = term + "&pageSize=" + String.valueOf(size) + "&api_key=" + apikey;
+        url_mod += "&dataType=Branded";
 
         Request request = new Request.Builder()
                 .url(url_base + url_mod)

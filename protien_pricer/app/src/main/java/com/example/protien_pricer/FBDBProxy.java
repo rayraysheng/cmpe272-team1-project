@@ -23,6 +23,14 @@ public class FBDBProxy {
     ArrayList<FoodItem> items = new ArrayList<FoodItem>();
     ArrayList<FoodItem> getItems(){return items;}
 
+    private FoodItem specific_item;
+    public void setSpecific_item(FoodItem item){
+        this.specific_item = item;
+    }
+    public FoodItem getSpecific_item() {
+        return specific_item;
+    }
+
     // Singleton
     private static FBDBProxy instance;
     private FBDBProxy(){}
@@ -39,13 +47,13 @@ public class FBDBProxy {
     }
 
     public void buildItems(){
-        FoodItem item = new FoodItem();
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //FoodItem item = snapshot.getValue(FoodItem.class);
                 //System.out.println("item is: " + item.getDescription());
 
+                resetItems();
                 int i = 0;
                 for (DataSnapshot s : snapshot.getChildren()){
                     String brand = s.child("brand").getValue(String.class);
@@ -60,17 +68,19 @@ public class FBDBProxy {
                     double size = s.child("size").getValue(double.class);
                     String unit = s.child("unit").getValue(String.class);
 
-                    item.setBrand(brand);
-                    item.setCalories(cal);
-                    item.setCarbs(carbs);
-                    item.setDescription(desc);
-                    item.setFat(fat);
-                    item.setId(id);
+                    System.out.println(desc);
+                    FoodItem item = new FoodItem();
+                    item.msetBrand(brand);
+                    item.msetCalories(cal);
+                    item.msetCarbs(carbs);
+                    item.msetDescription(desc);
+                    item.msetFat(fat);
+                    item.msetId(id);
                     item.setIndex(i);
-                    item.setProtein(protein);
-                    item.setSize(size);
-                    item.setUnit(unit);
-                    item.setServing();
+                    item.msetProtein(protein);
+                    item.msetSize(size);
+                    item.msetUnit(unit);
+                    item.msetServing();
 
                     // item.printAll();
                     items.add(item);
@@ -78,9 +88,11 @@ public class FBDBProxy {
                     i++;
                 }
                 System.out.println("build complete");
+
                 for(FoodItem it : getItems()){
-                    it.printAll();
+                    //it.printAll();
                 }
+
 
             }
 
@@ -91,8 +103,12 @@ public class FBDBProxy {
         });
     }
 
-    public void testDelete(String foodID){
+    public void delete(String foodID){
         ref.child(foodID).removeValue();
+    }
+
+    public void resetItems(){
+        items.clear();
     }
 
 }

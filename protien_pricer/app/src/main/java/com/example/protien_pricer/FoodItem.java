@@ -20,39 +20,39 @@ public class FoodItem {
     private String description;
     private String serving;
 
-    public void setId(String id) {
+    public void msetId(String id) {
         this.id = id;
     }
 
-    public void setCarbs(double carbs) {
+    public void msetCarbs(double carbs) {
         this.carbs = carbs;
     }
 
-    public void setProtein(double protein) {
+    public void msetProtein(double protein) {
         this.protein = protein;
     }
 
-    public void setFat(double fat) {
+    public void msetFat(double fat) {
         this.fat = fat;
     }
 
-    public void setCalories(double calories) {
+    public void msetCalories(double calories) {
         this.calories = calories;
     }
 
-    public void setSize(double size) {
+    public void msetSize(double size) {
         this.size = size;
     }
 
-    public void setUnit(String unit) {
+    public void msetUnit(String unit) {
         this.unit = unit;
     }
 
-    public void setBrand(String brand) {
+    public void msetBrand(String brand) {
         this.brand = brand;
     }
 
-    public void setDescription(String description) {
+    public void msetDescription(String description) {
         this.description = description;
     }
 
@@ -125,7 +125,7 @@ public class FoodItem {
         return serving;
     }
 
-    public void setServing(){
+    public void msetServing(){
         this.serving = getServing();
     }
 
