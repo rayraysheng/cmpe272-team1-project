@@ -1,4 +1,4 @@
-package com.example.protein_pricer;
+package com.example.protien_pricer;
 
 import android.app.Service;
 import android.content.Intent;

@@ -1,5 +1,6 @@
-package com.example.protein_pricer;
+package com.example.protien_pricer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,12 +9,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Calculations extends AppCompatActivity {
 
     FoodItem specific_item;
     private double price;
     private double servings;
+
+    FirebaseDatabase database;
+    DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +48,14 @@ public class Calculations extends AppCompatActivity {
         Button saved = findViewById(R.id.save_button);
         TextView ppd = findViewById(R.id.calc_result);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userID = "";
+        if(user != null){
+            userID = user.getUid();
+        }
+
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("SavedList/" + userID);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
@@ -81,10 +102,38 @@ public class Calculations extends AppCompatActivity {
         saved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 if(LoginStatus.getInstance().status() == false){
                    CannotSaveDialog dialog = new CannotSaveDialog();
                    dialog.show(getSupportFragmentManager(), "Cannot Save");
                 }
+
+                 */
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                FirebaseUser user = auth.getCurrentUser();
+                if(user == null){
+                    CannotSaveDialog dialog = new CannotSaveDialog();
+                    dialog.show(getSupportFragmentManager(), "Cannot Save");
+                }
+                else{
+                    addDataToFirebase();
+                }
+
+            }
+        });
+    }
+
+    public void addDataToFirebase(){
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ref.child(specific_item.getId()).setValue(specific_item);
+                Toast.makeText(Calculations.this, "added to list", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Calculations.this, "failed to add", Toast.LENGTH_SHORT).show();
             }
         });
     }

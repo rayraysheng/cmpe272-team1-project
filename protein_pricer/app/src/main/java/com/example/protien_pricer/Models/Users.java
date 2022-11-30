@@ -1,4 +1,4 @@
-package com.example.protein_pricer.Models;
+package com.example.protien_pricer.Models;
 
 public class Users {
     String UserId,UserName,ProfilePic;

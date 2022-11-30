@@ -28,7 +28,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "626542941165-bim8orngn0a6iprhngf0eei6m2o7t2l9.apps.googleusercontent.com",
+              "client_id": "626542941165-26ubp8vjc6i3fuv738b5li2cf4oipkbg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -57,7 +57,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "626542941165-bim8orngn0a6iprhngf0eei6m2o7t2l9.apps.googleusercontent.com",
+              "client_id": "626542941165-26ubp8vjc6i3fuv738b5li2cf4oipkbg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -81,6 +81,14 @@
           }
         },
         {
+          "client_id": "626542941165-g4dmf97uttkeitqsslibjocs0d5k2n0s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.protien_pricer",
+            "certificate_hash": "bd78ce1c43cc2052867fb30aad84abe1c016bf5e"
+          }
+        },
+        {
           "client_id": "626542941165-bim8orngn0a6iprhngf0eei6m2o7t2l9.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -94,7 +102,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "626542941165-bim8orngn0a6iprhngf0eei6m2o7t2l9.apps.googleusercontent.com",
+              "client_id": "626542941165-26ubp8vjc6i3fuv738b5li2cf4oipkbg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

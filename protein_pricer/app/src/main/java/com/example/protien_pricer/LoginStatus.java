@@ -1,13 +1,17 @@
-package com.example.protein_pricer;
+package com.example.protien_pricer;
 
 public class LoginStatus {
 
+    /*
     private boolean status = false;
 
     private static LoginStatus instance;
 
+     */
+
     private LoginStatus(){}
 
+    /*
     public static synchronized LoginStatus getInstance(){
         if(instance == null){
             instance = new LoginStatus();
@@ -26,4 +30,6 @@ public class LoginStatus {
     public boolean status(){
         return status;
     }
+
+     */
 }

@@ -1,7 +1,6 @@
-package com.example.protein_pricer;
+package com.example.protien_pricer;
 
-import static com.example.protein_pricer.R.id.logout_button;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ComponentName;
@@ -15,9 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.protein_pricer.SearchHandler.LocalBinder;
-
-import java.util.ArrayList;
+import com.example.protien_pricer.SearchHandler.LocalBinder;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,9 +68,7 @@ public class MainActivity extends AppCompatActivity {
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginStatus.getInstance().logout();
-                Intent out = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(out);
+                signOut();
             }
         });
 
@@ -114,6 +113,18 @@ public class MainActivity extends AppCompatActivity {
          */
     }
 
+    public void signOut(){
+        FirebaseAuth.getInstance().signOut();
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // Go back to sign in page
+                        Intent out = new Intent(MainActivity.this, LoginLegacyActivity.class);
+                        startActivity(out);
+                    }
+                });
+    }
     public void opensearchResult(){
         Intent intentNext = new Intent(this, SearchResultsActivity.class);
         startActivity(intentNext);

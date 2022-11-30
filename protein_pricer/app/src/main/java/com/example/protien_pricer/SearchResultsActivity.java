@@ -1,4 +1,4 @@
-package com.example.protein_pricer;
+package com.example.protien_pricer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -14,9 +14,8 @@ import android.os.IBinder;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import com.example.protein_pricer.SearchHandler.LocalBinder;
+import com.example.protien_pricer.SearchHandler.LocalBinder;
 
 public class SearchResultsActivity extends AppCompatActivity {
     private ArrayList<FoodItem> items;

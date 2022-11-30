@@ -1,4 +1,4 @@
-package com.example.protein_pricer;
+package com.example.protien_pricer;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.protein_pricer", appContext.getPackageName());
+        assertEquals("com.example.protien_pricer", appContext.getPackageName());
     }
 }

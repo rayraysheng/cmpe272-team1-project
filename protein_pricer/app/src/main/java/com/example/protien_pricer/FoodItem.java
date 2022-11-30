@@ -1,6 +1,4 @@
-package com.example.protein_pricer;
-
-import android.icu.text.DateIntervalFormat;
+package com.example.protien_pricer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,7 +9,7 @@ public class FoodItem {
     private JSONArray nutrients;
 
     private int index;
-    private int id;
+    private String id;
     private double carbs = 0;
     private double protein = 0;
     private double fat = 0;
@@ -46,15 +44,15 @@ public class FoodItem {
         return this.index;
     }
 
-    public double getId() {
+    public String getId() {
         return id;
     }
     public void setId(JSONObject json) {
 
-        int id = 0;
+        String id = "";
 
         try {
-            id = json.getInt("fdcId");
+            id = String.valueOf(json.getInt("fdcId"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

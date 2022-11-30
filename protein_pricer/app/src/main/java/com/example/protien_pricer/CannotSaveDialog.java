@@ -1,4 +1,4 @@
-package com.example.protein_pricer;
+package com.example.protien_pricer;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,7 +17,7 @@ public class CannotSaveDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Sign In", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent out = new Intent(getActivity(), LoginActivity.class);
+                        Intent out = new Intent(getActivity(), SignInActivity.class);
                         startActivity(out);
                     }
                 })

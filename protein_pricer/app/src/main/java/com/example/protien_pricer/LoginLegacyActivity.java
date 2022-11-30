@@ -1,17 +1,16 @@
-package com.example.protein_pricer;
+package com.example.protien_pricer;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.protein_pricer.Models.Users;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,20 +25,22 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class LoginActivity extends AppCompatActivity {
-    Button signin;
-    Button skip;
+public class LoginLegacyActivity extends AppCompatActivity {
+    Button sign_in_button;
+    Button skip_button;
+    Button other;
     private GoogleSignInClient client;
     FirebaseAuth auth;
     FirebaseDatabase database;
-    TextView title;
+    TextView textView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        signin = findViewById(R.id.signin_button);
-        skip = findViewById(R.id.skip_button);
+        setContentView(R.layout.activity_login_legacy);
+        sign_in_button = findViewById(R.id.button_sign_in);
+        skip_button = findViewById(R.id.skip_button);
+        other = findViewById(R.id.other_button);
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance("https://protien-pricer-default-rtdb.firebaseio.com/");
@@ -50,8 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         client = GoogleSignIn.getClient(this,options);
         client.revokeAccess();
 
-        // Assign button functions
-        signin.setOnClickListener(new View.OnClickListener() {
+        sign_in_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = client.getSignInIntent();
@@ -59,12 +59,17 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-        skip.setOnClickListener(new View.OnClickListener() {
+        skip_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent skip = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(skip);
+                goToMain();
+            }
+        });
+        other.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent other = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(other);
             }
         });
     }
@@ -81,20 +86,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         if (task.isSuccessful()) {
-                            LoginStatus.getInstance().login();
                             FirebaseUser user = auth.getCurrentUser();
-                            Users users1 = new Users();
-                            assert user != null;
-                            users1.setUserId(user.getUid());
-                            users1.setUserName(user.getDisplayName());
-                            users1.setProfilePic(user.getPhotoUrl().toString());
-                            database.getReference().child("users").child(user.getUid()).setValue(users1);
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra( "userName",user.getDisplayName());
-                            intent.putExtra("ProfilePic",user.getPhotoUrl().toString());
-                            startActivity(intent);
+                            System.out.println("================== User ID: " + user.getUid());
+                            goToMain();
                         } else {
-                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginLegacyActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -102,7 +98,13 @@ public class LoginActivity extends AppCompatActivity {
 
             } catch (ApiException e) {
                 e.printStackTrace();
+                System.out.println("task get result not working");
             }
         }
+    }
+
+    public void goToMain(){
+        Intent main = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(main);
     }
 }
