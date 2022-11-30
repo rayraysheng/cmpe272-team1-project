@@ -139,7 +139,8 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="g Protein per Dollar" />
+        android:text="g Protein per Dollar"
+        android:textSize="24sp" />
 
 
 

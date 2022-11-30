@@ -28,11 +28,13 @@ import com.google.firebase.database.FirebaseDatabase;
 public class LoginLegacyActivity extends AppCompatActivity {
     Button sign_in_button;
     Button skip_button;
-    Button other;
+    //Button other;
     private GoogleSignInClient client;
     FirebaseAuth auth;
     FirebaseDatabase database;
     TextView textView2;
+
+    private FBDBProxy proxy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class LoginLegacyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_legacy);
         sign_in_button = findViewById(R.id.button_sign_in);
         skip_button = findViewById(R.id.skip_button);
-        other = findViewById(R.id.other_button);
+        //other = findViewById(R.id.other_button);
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance("https://protien-pricer-default-rtdb.firebaseio.com/");
@@ -65,6 +67,7 @@ public class LoginLegacyActivity extends AppCompatActivity {
                 goToMain();
             }
         });
+        /*
         other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +75,8 @@ public class LoginLegacyActivity extends AppCompatActivity {
                 startActivity(other);
             }
         });
+
+         */
     }
 
     @Override
@@ -98,6 +103,9 @@ public class LoginLegacyActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = auth.getCurrentUser();
                             System.out.println("================== User ID: " + user.getUid());
+                            proxy = FBDBProxy.getInstance();
+                            proxy.setRef(user.getUid());
+                            proxy.buildItems();
                             goToMain();
                         } else {
                             Toast.makeText(LoginLegacyActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

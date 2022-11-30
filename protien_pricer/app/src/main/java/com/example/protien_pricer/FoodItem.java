@@ -18,6 +18,49 @@ public class FoodItem {
     private String unit = "oz";
     private String brand = "N/A";
     private String description;
+    private String serving;
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCarbs(double carbs) {
+        this.carbs = carbs;
+    }
+
+    public void setProtein(double protein) {
+        this.protein = protein;
+    }
+
+    public void setFat(double fat) {
+        this.fat = fat;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setServing(String serving) {
+        this.serving = serving;
+    }
+
+    public FoodItem(){}
 
     public FoodItem(JSONObject json){
         setId(json);
@@ -80,6 +123,10 @@ public class FoodItem {
     public String getServing(){
         String serving = String.valueOf(getSize()) + getUnit();
         return serving;
+    }
+
+    public void setServing(){
+        this.serving = getServing();
     }
 
     public double getSize(){return size;}
@@ -196,7 +243,7 @@ public class FoodItem {
         }
     }
 
-    private void printAll(){
+    public void printAll(){
         System.out.println("-------------------");
         System.out.println("index: " + getIndex());
         System.out.println("id: " + getId());

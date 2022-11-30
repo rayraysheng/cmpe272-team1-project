@@ -81,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
                     CannotSaveDialog dialog = new CannotSaveDialog();
                     dialog.show(getSupportFragmentManager(), "Not Logged In");
                 }
+                else{
+                    Intent sl = new Intent(getApplicationContext(), SavedListActivity.class);
+                    startActivity(sl);
+                }
             }
         });
 

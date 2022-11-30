@@ -52,6 +52,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         setAdapter();
 
+        /*
         for(int i = 0; i < items.size(); i++){
 
             FoodItem item = items.get(i);
@@ -70,6 +71,8 @@ public class SearchResultsActivity extends AppCompatActivity {
             System.out.println("energy " + item.getCalories());
             System.out.println("===================");
         }
+
+         */
 
 
 

@@ -117,6 +117,9 @@ public class Calculations extends AppCompatActivity {
                 }
                 else{
                     addDataToFirebase();
+
+                    Intent sl = new Intent(getApplicationContext(), SavedListActivity.class);
+                    startActivity(sl);
                 }
 
             }
