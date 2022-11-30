@@ -19,6 +19,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +73,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        saved_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user == null){
+                    CannotSaveDialog dialog = new CannotSaveDialog();
+                    dialog.show(getSupportFragmentManager(), "Not Logged In");
+                }
+            }
+        });
+
         // Connect to Search Handler service
         Intent intentSH = new Intent(this, SearchHandler.class);
         bindService(intentSH, serviceConnection, Context.BIND_AUTO_CREATE);
@@ -114,7 +126,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signOut(){
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            System.out.println("before signout: " + FirebaseAuth.getInstance().getCurrentUser().getUid());
+        }
+
         FirebaseAuth.getInstance().signOut();
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            System.out.println("after signout: " + FirebaseAuth.getInstance().getCurrentUser().getUid());
+        }
+
+        Intent out = new Intent(MainActivity.this, LoginLegacyActivity.class);
+        startActivity(out);
+        /*
         AuthUI.getInstance()
                 .signOut(this)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -124,6 +148,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(out);
                     }
                 });
+
+         */
     }
     public void opensearchResult(){
         Intent intentNext = new Intent(this, SearchResultsActivity.class);

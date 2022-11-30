@@ -109,8 +109,8 @@ public class Calculations extends AppCompatActivity {
                 }
 
                  */
-                FirebaseAuth auth = FirebaseAuth.getInstance();
-                FirebaseUser user = auth.getCurrentUser();
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user == null){
                     CannotSaveDialog dialog = new CannotSaveDialog();
                     dialog.show(getSupportFragmentManager(), "Cannot Save");
