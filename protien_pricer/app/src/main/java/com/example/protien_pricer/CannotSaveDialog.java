@@ -14,6 +14,7 @@ public class CannotSaveDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Not Logged In")
                 .setMessage("To save a searched item or access your saved searches, please log into the app")
+                /*
                 .setPositiveButton("Sign In", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -21,7 +22,9 @@ public class CannotSaveDialog extends AppCompatDialogFragment {
                         startActivity(out);
                     }
                 })
-                .setNegativeButton("Not Now", new DialogInterface.OnClickListener() {
+
+                 */
+                .setNegativeButton("Okay", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
