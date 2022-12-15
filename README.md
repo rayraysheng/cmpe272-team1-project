@@ -1,5 +1,4 @@
-# cmpe272-team1-project
-Protein Pricer
+# Protein Pricer: CMPE272 Fall 2022 Team 1 Project
 CMPE 272 Enterprise Software Platforms Instructor: Professor Rakesh Ranjan Computer Engineering Department
 San José State University https://github.com/rayraysheng/cmpe272-team1-project
 
@@ -40,6 +39,7 @@ Our Android app consists of an UI layer that takes user input and displays searc
 The Domain layer uses the users’ Google accounts to handle user sign-in via Firebase Authentication services. The Data layer makes HTTP API calls to retrieve food item data from the USDA FoodData Central database. The Data layer also connects to Firebase Realtime Database services to save and retrieve user’s saved searches.
 
 ![Architecture](images/protein_pricer_architechture.png)
+
 Figure 1: Architecture
 
 
@@ -58,11 +58,13 @@ Commercial meal-tracking apps on the market usually create and maintain their ow
 When a search term is entered by the user through the UI layer of the app, an URL is constructed by the app to make an API call to the FoodData Central database, which returns the response in JSON format. The API response contains the metadata of the search, as well as a list of JSON objects that represent the specific food items that are returned (figure 2). 
 
 ![API Response](images/search_results.png)
+
 Figure 2: API Response
 
 The Data layer of the app parses the response and isolates the food item objects. From these food item objects, the Data layer then parses each food item and extracts the relevant nutrient information that is used in calculations in the Domain layer and displayed in the UI layer (figure 3).
 
 ![Relevant Nutrients](images/relevant_nutrients.png)
+
 Figure 3: Relevant Nutrients
 
 
