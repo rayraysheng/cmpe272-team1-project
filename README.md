@@ -1,6 +1,7 @@
 # cmpe272-team1-project
 
 
+
 ## Project Planning - Internal Use ##
 
 ### UPDATES ###
@@ -251,20 +252,16 @@ Have a single page where the user can search for a specific food item from the d
 
 In addition, we can also easily add a field to display the dollar cost per 2000 calories for users that don't care about specific macros but instead just need to find an affordable way to sustain a lot of people.
 
-#### Other Core Features to Include ####
-
-We should implement these features before the end of the project to present it as a complete app.
-
-1. [Authenticate user logins](https://developer.android.com/training/id-auth)
-	- the purpose is to accommodates features that save and access user-provided data
-1. Allow the user to save and remove search results to the app screen, along with their price per gram value so the user can easily compare them.
-	- requires the user login feature (unless we want save the list locally on the user's machine, which is not ideal)
 
 #### Non-core Features ####
 
 These are ideas for non-essential additional features that would be nice to have for a better user experience or extension of functionalities beyond the initial expectations. 
 We are likely to not have time to implement these features. If we have time to add thoese, great, if not, no big deal.
 
+1. [Authenticate user logins](https://developer.android.com/training/id-auth)
+	- the purpose is to accommodates features that save and access user-provided data
+1. Allow the user to save and remove search results to the app screen, along with their price per gram value so the user can easily compare them.
+	- requires the user login feature (unless we want save the list locally on the user's machine, which is not ideal)
 1. Allow the user to save a number for grams of daily protein intake, then each searched food item will also show the theoretical daily cost of protein.
 	- requires the user login feature (unless we want save the list locally on the user's machine, which is not ideal
 1. Enable merchant accounts to display their deals on the app.
